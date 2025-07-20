@@ -26,14 +26,25 @@ class PDFOutlineExtractor:
         """Initialize the PDF outline extractor."""
         # Common heading patterns
         self.heading_patterns = [
-            r'^\d+\.\s+',  # 1. Chapter Title
-            r'^\d+\.\d+\s+',  # 1.1 Section Title
-            r'^\d+\.\d+\.\d+\s+',  # 1.1.1 Subsection Title
-            r'^Chapter\s+\d+',  # Chapter 1
-            r'^Section\s+\d+',  # Section 1
-            r'^Appendix\s+[A-Z]',  # Appendix A
-            r'^[A-Z]+\.\s+',  # A. Title
-            r'^\([a-z]\)\s+',  # (a) subtitle
+            # 1. Chapter Title
+            r'^\d+\.\s+',                    # match a number followed by a dot and space
+            r'^[A-Z][A-Z\s]+$',              # match all caps titles
+            r'^[A-Z][a-z\s]+$',              # match capitalized titles
+            r'^[A-Z][a-z]+\s+[A-Z][a-z]+$',  # match titles with subtitle\
+
+            # 2. Section Title
+            r'^\d+\.\d+\s+',                 # match a number followed by a dot, another number, and a space
+            r'^\d+\.\d+\.\s+',               # match a number followed by a dot, another number, another dot, and a space
+            r'^\d+\.\d+\.\d+\s+',            # match a number followed by a dot, another number, another dot, another number, and a space
+            
+            # 4. Specific Keywords
+            r'^Chapter\s+\d+',               # match the word Chapter followed by a space and a number
+            r'^Section\s+\d+',               # match the word Section followed by a space and a number
+            r'^Appendix\s+[A-Z]',            # match the word Appendix followed by a space and a capital letter
+
+            # 5. General Patterns
+            r'^[A-Z]+\.\s+',                 # match capital letters followed by a dot and space
+            r'^\([a-z]\)\s+',                # match a lowercase letter in parentheses followed by a space
         ]
         
         # Font size thresholds for heading detection
