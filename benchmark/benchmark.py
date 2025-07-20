@@ -13,7 +13,7 @@ import psutil
 import json
 import argparse
 from pathlib import Path
-from pdf_outline_extractor.extractor import PDFOutlineExtractor
+from pdf_outline_extractor import PDFOutlineExtractor
 import logging
 
 logging.basicConfig(level=logging.INFO)
