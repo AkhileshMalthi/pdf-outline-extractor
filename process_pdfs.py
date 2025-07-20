@@ -12,7 +12,7 @@ import json
 import logging
 from pathlib import Path
 
-from pdf_outline_extractor.extractor import PDFOutlineExtractor
+from pdf_outline_extractor import PDFOutlineExtractor
 
 # Configure logging
 logging.basicConfig(
