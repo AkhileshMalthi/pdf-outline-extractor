@@ -1,7 +1,7 @@
 """
-PDF Outline Extractor - Package Initialization
+PDF Outline Extractor Package
 
-This package provides tools for extracting outlines from PDF files.
+This package provides functionality to extract structured outlines from PDF documents.
 """
 
 __version__ = "0.1.0"

@@ -253,12 +253,14 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "ipykernel" },
+    { name = "psutil" },
     { name = "pymupdf" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "ipykernel", specifier = ">=6.29.5" },
+    { name = "psutil", specifier = ">=6.1.0" },
     { name = "pymupdf", specifier = ">=1.26.3" },
 ]
 
