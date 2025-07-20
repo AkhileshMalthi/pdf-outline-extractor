@@ -26,9 +26,9 @@ def process_pdfs() -> None:
     """
     Main processing function that extracts outlines from all PDFs in input directory.
     """
-    input_dir = Path("challenge/sample_dataset/pdfs")
-    output_dir = Path("output")
-    
+    input_dir = Path("/app/input")
+    output_dir = Path("/app/output")
+
     # Ensure directories exist
     if not input_dir.exists():
         logger.error(f"Input directory {input_dir} does not exist")
