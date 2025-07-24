@@ -1,11 +1,12 @@
 import logging
 from pathlib import Path
 from typing import Dict, Any, Union
+from .pdf_processor import PDFProcessor
 
 """
 PDF Outline Extractor Class
 
-Main class for extracting outlines from PDF files.
+Main class for extracting outlines from PDF files using rule-based classification.
 """
 
 
@@ -14,18 +15,21 @@ logger = logging.getLogger(__name__)
 
 class PDFOutlineExtractor:
     """
-    Extracts outline/bookmark structure from PDF files.
+    Extracts outline/bookmark structure from PDF files using rule-based classification.
     """
     
-    def __init__(self):
+    def __init__(self, custom_thresholds: Union[Dict[str, float], None] = None):
         """
         Initialize the PDF outline extractor.
+        
+        Args:
+            custom_thresholds: Optional custom thresholds for rule evaluation
         """
-        pass
+        self.processor = PDFProcessor(custom_thresholds)
     
     def extract_outline(self, pdf_file: Union[str, Path]) -> Dict[str, Any]:
         """
-        Extract outline from a PDF file.
+        Extract outline from a PDF file using rule-based classification.
         
         Args:
             pdf_file: Path to the PDF file
@@ -43,11 +47,8 @@ class PDFOutlineExtractor:
         if not pdf_path.exists():
             raise FileNotFoundError(f"PDF file not found: {pdf_path}")
         
-        # TODO: Implement PDF outline extraction logic
-        # This should return a dictionary with outline structure
-        
-        # Placeholder return
-        return {
-            "title": "",
-            "outline": [],
-        }
+        try:
+            return self.processor.extract_outline_from_pdf(str(pdf_path))
+        except Exception as e:
+            logger.error(f"Error extracting outline from {pdf_path}: {e}")
+            raise
