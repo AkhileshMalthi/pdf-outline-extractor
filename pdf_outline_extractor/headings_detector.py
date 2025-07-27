@@ -40,7 +40,7 @@ def apply_heuristic_rules_and_classify(blocks: List[TextBlock]) -> List[TextBloc
 
     return blocks
 
-def generate_hackathon_output(text_blocks: List[TextBlock]) -> dict:
+def generate_output(text_blocks: List[TextBlock]) -> dict:
     title = "Untitled Document"
     outline = []
 
@@ -72,7 +72,7 @@ def process_pdf(input_pdf_path: str, output_json_path: str):
         classified_blocks = apply_heuristic_rules_and_classify(extracted_blocks)
         logging.info("Applied heuristic rules for heading detection.")
 
-        final_output_json = generate_hackathon_output(classified_blocks)
+        final_output_json = generate_output(classified_blocks)
         logging.info("Generated final JSON output structure (Headings marked as H_GENERIC).")
 
         with open(output_json_path, 'w', encoding='utf-8') as f:
