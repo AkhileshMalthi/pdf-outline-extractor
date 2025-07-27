@@ -1,7 +1,5 @@
-# heading_rules.py
 from .pdf_features import TextBlock
 
-# Define constants for common thresholds (these will need tuning!)
 MIN_HEADING_FONT_SIZE_DIFF = 2.0
 MIN_RELATIVE_FONT_SIZE = 1.2
 MAX_HEADING_WORDS = 15
@@ -116,7 +114,6 @@ def not_heading_if_no_bold_or_large_font(block: TextBlock) -> bool:
     return not block.is_bold and not heading_if_larger_font(block)
 
 
-# You can create lists of rules for easy iteration or combination
 POSITIVE_HEADING_INDICATORS = [
     heading_if_larger_font,
     heading_if_bold,
@@ -133,5 +130,3 @@ NEGATIVE_HEADING_INDICATORS = [
     not_heading_if_very_long,
     not_heading_if_no_bold_or_large_font,
 ]
-
-# Removed H1_INDENTATION_RULE, H2_INDENTATION_RULE, H3_INDENTATION_RULE as requested.

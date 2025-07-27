@@ -61,7 +61,8 @@ class TextBlock(
     This class can be instantiated with all features required for heuristics
     and ML classification.
     """
-    # Prediction/Heuristic Outputs (optional fields, can be set later)
+    # We can remove this field if not needed for the heuristic pass
+    # Additional Features (optional fields, can be set later)
     potential_heading_level: Optional[str] = None # e.g., "H1", "H2", "H3", "Body"
     confidence_score: Optional[float] = None # For ML model output
 
